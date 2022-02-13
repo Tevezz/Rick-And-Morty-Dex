@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object CharacterDataModule {
+internal object CharacterDataModule {
 
     @Provides
     fun provideCharacterRemoteDataSource(

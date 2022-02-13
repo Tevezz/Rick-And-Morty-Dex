@@ -1,6 +1,6 @@
 package com.mbe.data.character.model
 
-data class CharacterResponse(
+internal data class CharacterResponse(
     val id: Long?,
     val name: String?,
     val status: String?,

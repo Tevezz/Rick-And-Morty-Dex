@@ -4,15 +4,26 @@ import com.mbe.data.character.model.CharacterListResponse
 import com.mbe.data.character.model.CharacterResponse
 import com.mbe.data.exception.NoContentException
 import com.mbe.domain.character.model.Character
+import com.mbe.domain.character.model.CharacterList
 
-fun CharacterListResponse.toCharacterList(): List<Character> {
-    return results?.mapNotNull {
+internal fun CharacterListResponse.toCharacterList(): CharacterList {
+    return CharacterList(
+        count = info?.count ?: throw NoContentException(),
+        pages = info.pages ?: throw NoContentException(),
+        next = info.next.orEmpty(),
+        prev = info.prev.orEmpty(),
+        list = results?.toListCharacter() ?: emptyList()
+    )
+}
+
+internal fun List<CharacterResponse>.toListCharacter(): List<Character> {
+    return mapNotNull {
         try {
             it.toCharacter()
         } catch (e: Exception) {
             null
         }
-    } ?: emptyList()
+    }
 }
 
 internal fun CharacterResponse.toCharacter(): Character {

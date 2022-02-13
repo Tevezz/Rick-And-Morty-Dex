@@ -1,5 +1,6 @@
 package com.mbe.data.character.model
 
-data class CharacterListResponse(
+internal data class CharacterListResponse(
+    val info: CharacterInfoResponse?,
     val results: List<CharacterResponse>?
 )

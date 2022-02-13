@@ -1,6 +1,7 @@
 package com.mbe.presentation.character.list.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mbe.domain.character.usecase.GetCharactersUseCase
@@ -20,16 +21,28 @@ class CharacterListViewModel @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
+    private var pageNumb = 0
+
     private val _characterListFlow = MutableStateFlow<List<CharacterListModelUI>>(emptyList())
     val characterList: StateFlow<List<CharacterListModelUI>> get() = _characterListFlow
 
-    fun requestCharactersList() {
+    fun requestNextPage() {
+        pageNumb++
+        requestCharactersList(pageNumb)
+    }
+
+    fun requestPreviousPage() {
+        pageNumb--
+        requestCharactersList(pageNumb)
+    }
+
+    private fun requestCharactersList(pageNum: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            getCharactersUseCase().also { response ->
+            getCharactersUseCase(pageNum).also { response ->
                 when (response) {
                     is Success -> {
-                        _characterListFlow.value = response.data.toListModelUI()
-                        Log.e("ViewModel", "Success: ${response.data.size}")
+                        Log.e("ViewModel", "Error: ${response.data.pages}")
+//                        _characterListFlow.value = response.data.toListModelUI()
                     }
                     is Error -> {
                         // TODO Handle Error
