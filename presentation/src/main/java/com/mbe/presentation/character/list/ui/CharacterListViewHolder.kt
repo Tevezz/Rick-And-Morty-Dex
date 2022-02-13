@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.mbe.presentation.character.list.model.CharacterListModelUI
+import com.mbe.presentation.character.list.model.CharacterListItemModelUI
 import com.mbe.presentation.databinding.ViewHolderCharacterListBinding
 
 class CharacterListViewHolder(
@@ -16,7 +16,7 @@ class CharacterListViewHolder(
             false
         )
 ) : RecyclerView.ViewHolder(viewBinding.root) {
-    fun bind(character: CharacterListModelUI, onClick: (CharacterListModelUI) -> Unit) {
+    fun bind(character: CharacterListItemModelUI, onClick: (CharacterListItemModelUI) -> Unit) {
         with(viewBinding) {
             characterImage.load(character.image)
             characterId.text = character.id.toString()

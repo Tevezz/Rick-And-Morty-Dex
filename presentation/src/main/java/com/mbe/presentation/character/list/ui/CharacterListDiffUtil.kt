@@ -1,20 +1,20 @@
 package com.mbe.presentation.character.list.ui
 
 import androidx.recyclerview.widget.DiffUtil
-import com.mbe.presentation.character.list.model.CharacterListModelUI
+import com.mbe.presentation.character.list.model.CharacterListItemModelUI
 
-class CharacterListDiffUtil : DiffUtil.ItemCallback<CharacterListModelUI>() {
+class CharacterListDiffUtil : DiffUtil.ItemCallback<CharacterListItemModelUI>() {
 
     override fun areItemsTheSame(
-        oldItem: CharacterListModelUI,
-        newItem: CharacterListModelUI
+        oldItem: CharacterListItemModelUI,
+        newItem: CharacterListItemModelUI
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
-        oldItem: CharacterListModelUI,
-        newItem: CharacterListModelUI
+        oldItem: CharacterListItemModelUI,
+        newItem: CharacterListItemModelUI
     ): Boolean {
         return oldItem.id == newItem.id
             && oldItem.name == newItem.name

@@ -43,13 +43,22 @@ class CharacterListFragment : Fragment() {
             characterList.adapter = CharacterListAdapter {
                 Toast.makeText(context, "Clicked: ${it.name}", Toast.LENGTH_SHORT).show()
             }
+            characterListNextBtn.setOnClickListener {
+                viewModel.requestNextPage()
+            }
+            characterListPrevBtn.setOnClickListener {
+                viewModel.requestPreviousPage()
+            }
         }
     }
 
     private fun initObservers() {
         lifecycleScope.launchWhenStarted {
             viewModel.characterList.collectLatest {
-                viewBinding.characterList.getTypedAdapter<CharacterListAdapter>()?.submitList(it)
+                with(viewBinding) {
+                    characterListPageNum.text = "${it.currentPage} / ${it.pages}" // TODO Add resource string
+                    characterList.getTypedAdapter<CharacterListAdapter>()?.submitList(it.list)
+                }
             }
         }
     }

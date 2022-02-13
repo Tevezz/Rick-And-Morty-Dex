@@ -1,9 +1,10 @@
 package com.mbe.presentation.character.list.model
 
 data class CharacterListModelUI(
-    val id: Long,
-    val name: String,
-    val status: String,
-    val species: String,
-    val image: String
+    val currentPage: Int,
+    val count: Int,
+    val pages: Int,
+    val hasNext: Boolean,
+    val hasPrev: Boolean,
+    val list: List<CharacterListItemModelUI>
 )

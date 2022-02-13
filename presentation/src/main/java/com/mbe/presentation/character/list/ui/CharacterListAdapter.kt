@@ -2,12 +2,12 @@ package com.mbe.presentation.character.list.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.mbe.presentation.character.list.model.CharacterListModelUI
+import com.mbe.presentation.character.list.model.CharacterListItemModelUI
 
 class CharacterListAdapter(
-    private val onClick: (CharacterListModelUI) -> Unit
+    private val onClick: (CharacterListItemModelUI) -> Unit
 ) :
-    ListAdapter<CharacterListModelUI, CharacterListViewHolder>(CharacterListDiffUtil()) {
+    ListAdapter<CharacterListItemModelUI, CharacterListViewHolder>(CharacterListDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder {
         return CharacterListViewHolder(parent)
