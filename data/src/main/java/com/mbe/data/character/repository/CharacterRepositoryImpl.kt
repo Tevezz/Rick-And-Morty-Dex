@@ -1,7 +1,7 @@
-package com.mbe.data.characters.repository
+package com.mbe.data.character.repository
 
-import com.mbe.data.characters.datasource.CharacterRemoteDataSource
-import com.mbe.data.characters.mapper.toCharacterList
+import com.mbe.data.character.datasource.CharacterRemoteDataSource
+import com.mbe.data.character.mapper.toCharacterList
 import com.mbe.domain.character.model.Character
 import com.mbe.domain.character.repository.CharacterRepository
 import com.mbe.domain.common.model.Response

@@ -1,8 +1,8 @@
-package com.mbe.data.characters.di
+package com.mbe.data.character.di
 
-import com.mbe.data.characters.datasource.CharacterRemoteDataSource
-import com.mbe.data.characters.datasource.CharacterRemoteDataSourceImpl
-import com.mbe.data.characters.repository.CharacterRepositoryImpl
+import com.mbe.data.character.datasource.CharacterRemoteDataSource
+import com.mbe.data.character.datasource.CharacterRemoteDataSourceImpl
+import com.mbe.data.character.repository.CharacterRepositoryImpl
 import com.mbe.domain.character.repository.CharacterRepository
 import dagger.Module
 import dagger.Provides

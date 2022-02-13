@@ -1,4 +1,4 @@
-package com.mbe.data.characters.model
+package com.mbe.data.character.model
 
 data class CharacterResponse(
     val id: Long?,
@@ -6,6 +6,7 @@ data class CharacterResponse(
     val status: String?,
     val species: String?,
     val type: String?,
-    val gender: String?
+    val gender: String?,
+    val image: String?
     // TODO OTHER PARTS
 )

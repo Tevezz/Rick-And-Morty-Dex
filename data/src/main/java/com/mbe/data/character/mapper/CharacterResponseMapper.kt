@@ -1,7 +1,7 @@
-package com.mbe.data.characters.mapper
+package com.mbe.data.character.mapper
 
-import com.mbe.data.characters.model.CharacterListResponse
-import com.mbe.data.characters.model.CharacterResponse
+import com.mbe.data.character.model.CharacterListResponse
+import com.mbe.data.character.model.CharacterResponse
 import com.mbe.data.exception.NoContentException
 import com.mbe.domain.character.model.Character
 
@@ -22,6 +22,7 @@ internal fun CharacterResponse.toCharacter(): Character {
         status = status ?: throw NoContentException(),
         species = species ?: throw NoContentException(),
         type = type.orEmpty(),
-        gender = gender.orEmpty()
+        gender = gender.orEmpty(),
+        image = image ?: throw NoContentException()
     )
 }
