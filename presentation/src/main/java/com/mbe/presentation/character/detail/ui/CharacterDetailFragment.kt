@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
+import com.google.android.material.tabs.TabLayoutMediator
+import com.mbe.presentation.R
 import com.mbe.presentation.character.detail.viewmodel.CharacterDetailViewModel
 import com.mbe.presentation.databinding.FragmentCharacterDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +37,17 @@ class CharacterDetailFragment : Fragment() {
     }
 
     private fun initViews() {
-        viewBinding.characterDetailsImage.load(viewModel.character.image)
+        with(viewBinding) {
+            characterDetailsImage.load(viewModel.character.image)
+            characterDetailsViewPager.adapter = CharacterDetailFragmentAdapter(this@CharacterDetailFragment)
+            TabLayoutMediator(characterDetailsTabs, characterDetailsViewPager) { tab, position ->
+                tab.text = when (position) {
+                    0 -> getString(R.string.character_info)
+                    1 -> getString(R.string.character_location)
+                    else -> getString(R.string.character_episodes)
+                }
+            }.attach()
+        }
     }
 
     override fun onDestroyView() {

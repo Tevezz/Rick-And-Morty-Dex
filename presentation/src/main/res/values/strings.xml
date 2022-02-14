@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">presentation</string>
+    <string name="character_info">Info</string>
+    <string name="character_location">Location</string>
+    <string name="character_episodes">Episodes</string>
+
+    <string name="character_info_id_title">Id</string>
+    <string name="character_info_name_title">Name</string>
+    <string name="character_info_status_title">Status</string>
+    <string name="character_info_species_title">Species</string>
+    <string name="character_info_type_title">Type</string>
+    <string name="character_info_gender_title">Gender</string>
+
 </resources>

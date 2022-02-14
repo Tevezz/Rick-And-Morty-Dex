@@ -1,6 +1,5 @@
 package com.mbe.presentation.character.detail.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.mbe.domain.character.model.Character
