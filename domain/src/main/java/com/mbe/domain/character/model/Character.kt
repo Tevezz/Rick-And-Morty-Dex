@@ -14,7 +14,7 @@ data class Character(
     val image: String,
     val url: String,
     val created: String,
-    val origin: String,
+    val originUrl: String,
     val locationUrl: String,
     val episode: List<String>
 ) : Parcelable

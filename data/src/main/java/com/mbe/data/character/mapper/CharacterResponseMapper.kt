@@ -37,7 +37,7 @@ internal fun CharacterResponse.toCharacter(): Character {
         image = image.orEmpty(),
         url = url.orEmpty(),
         created = created.orEmpty(),
-        origin = origin?.name.orEmpty(),
+        originUrl = origin?.url.orEmpty(),
         locationUrl = location?.url.orEmpty(),
         episode = episode.orEmpty()
     )

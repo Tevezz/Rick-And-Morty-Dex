@@ -16,7 +16,7 @@ class CharacterInfoFragment : Fragment() {
     private var _binding: FragmentCharacterInfoBinding? = null
     private val viewBinding get() = _binding!!
 
-    private val viewModel: CharacterDetailViewModel by viewModels({requireParentFragment()})
+    private val viewModel: CharacterDetailViewModel by viewModels({ requireParentFragment() })
 
     override fun onCreateView(
         inflater: LayoutInflater,

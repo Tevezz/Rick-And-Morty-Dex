@@ -12,6 +12,7 @@ class CharacterDetailFragmentAdapter(fragment: Fragment) : FragmentStateAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> CharacterInfoFragment()
+            1 -> CharacterLocationFragment()
             else -> Fragment()
         }
     }
