@@ -7,6 +7,10 @@ internal data class CharacterResponse(
     val species: String?,
     val type: String?,
     val gender: String?,
-    val image: String?
-    // TODO OTHER PARTS
+    val image: String?,
+    val url: String?,
+    val created: String?,
+    val origin: CharacterLocationResponse?,
+    val location: CharacterLocationResponse?,
+    val episode: List<String>?
 )

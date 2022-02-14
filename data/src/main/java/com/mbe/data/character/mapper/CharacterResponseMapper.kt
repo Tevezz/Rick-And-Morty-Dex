@@ -30,10 +30,15 @@ internal fun CharacterResponse.toCharacter(): Character {
     return Character(
         id = id ?: throw NoContentException(),
         name = name ?: throw NoContentException(),
-        status = status ?: throw NoContentException(),
-        species = species ?: throw NoContentException(),
+        status = status.orEmpty(),
+        species = species.orEmpty(),
         type = type.orEmpty(),
         gender = gender.orEmpty(),
-        image = image ?: throw NoContentException()
+        image = image.orEmpty(),
+        url = url.orEmpty(),
+        created = created.orEmpty(),
+        origin = origin?.name.orEmpty(),
+        locationUrl = location?.url.orEmpty(),
+        episode = episode.orEmpty()
     )
 }

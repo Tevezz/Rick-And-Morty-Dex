@@ -1,5 +1,9 @@
 package com.mbe.domain.character.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Character(
     val id: Long,
     val name: String,
@@ -7,5 +11,10 @@ data class Character(
     val species: String,
     val type: String,
     val gender: String,
-    val image: String
-)
+    val image: String,
+    val url: String,
+    val created: String,
+    val origin: String,
+    val locationUrl: String,
+    val episode: List<String>
+) : Parcelable
