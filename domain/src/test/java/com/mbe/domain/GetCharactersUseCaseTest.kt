@@ -54,22 +54,7 @@ internal class GetCharactersUseCaseTest {
 
         // THEN
         result.shouldBeInstanceOf<Response.Success<CharacterList>>()
-        with(result.data) {
-            count shouldBe successCharacterList.count
-            pages shouldBe successCharacterList.pages
-            next shouldBe successCharacterList.next
-            prev shouldBe successCharacterList.prev
-            list.size shouldBe 1
-        }
-        with(result.data.list.first()) {
-            id shouldBe 21
-            name shouldBe "Aqua Morty"
-            status shouldBe "unknown"
-            species shouldBe "Humanoid"
-            type shouldBe "Fish-Person"
-            gender shouldBe "Male"
-            image shouldBe "https://rickandmortyapi.com/api/character/avatar/21.jpeg"
-        }
+        result.data.list.size shouldBe 1
     }
 
     @Test
