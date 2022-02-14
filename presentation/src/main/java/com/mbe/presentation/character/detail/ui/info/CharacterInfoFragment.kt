@@ -1,4 +1,4 @@
-package com.mbe.presentation.character.detail.ui
+package com.mbe.presentation.character.detail.ui.info
 
 import android.os.Bundle
 import android.view.LayoutInflater
