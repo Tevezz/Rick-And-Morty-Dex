@@ -17,8 +17,7 @@ class CharacterEpisodeViewHolder(
 ) : RecyclerView.ViewHolder(viewBinding.root) {
     fun bind(episode: CharacterDetailEpisodeUI) {
         with(viewBinding) {
-            episodeId.text = episode.id
-            episodeName.text = episode.name
+            episodeIdName.text = "#${episode.id}" + " " + "${episode.name}"
             episodeDate.text = episode.airDate
             episodeSeason.text = episode.episode
         }

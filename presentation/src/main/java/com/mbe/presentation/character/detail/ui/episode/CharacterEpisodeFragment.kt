@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.mbe.presentation.character.detail.model.CharacterDetailFlowState
 import com.mbe.presentation.character.detail.viewmodel.CharacterDetailViewModel
 import com.mbe.presentation.databinding.FragmentCharacterEpisodeBinding
@@ -39,6 +41,7 @@ class CharacterEpisodeFragment : Fragment() {
 
     private fun initViews() {
         with(viewBinding) {
+            characterEpisodesList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             characterEpisodesList.adapter = CharacterEpisodeAdapter()
         }
     }

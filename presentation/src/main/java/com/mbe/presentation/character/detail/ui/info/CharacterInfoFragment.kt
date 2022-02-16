@@ -40,6 +40,7 @@ class CharacterInfoFragment : Fragment() {
             viewModel.characterFlow.collectLatest { state ->
                 with(viewBinding) {
                     if (state is CharacterDetailFlowState.CharacterDetail) {
+                        characterIdName.text = "#${state.character.id}" + "  " + "${state.character.name}"
                         characterId.text = state.character.id
                         characterName.text = state.character.name
                         characterStatus.text = state.character.status

@@ -3,50 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginVertical="8dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/episode_id"
+        android:id="@+id/episode_id_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/character_detail_value"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/episode_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/episode_id" />
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/episode_season_title"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Season"
+        android:text="@string/character_episode_season"
+        android:textColor="@color/character_detail_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/episode_name" />
+        app:layout_constraintTop_toBottomOf="@+id/episode_id_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/episode_season"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/character_detail_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/episode_season_title"
-        app:layout_constraintTop_toBottomOf="@+id/episode_name" />
+        app:layout_constraintTop_toBottomOf="@+id/episode_id_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/episode_date_title"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Release Date"
+        android:text="@string/character_episode_release_data"
+        android:textColor="@color/character_detail_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/episode_season" />
 
@@ -54,8 +51,9 @@
         android:id="@+id/episode_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/character_detail_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/episode_date_title"
         app:layout_constraintTop_toBottomOf="@+id/episode_season" />
