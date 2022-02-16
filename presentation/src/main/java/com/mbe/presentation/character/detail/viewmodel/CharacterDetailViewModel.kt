@@ -1,29 +1,21 @@
 package com.mbe.presentation.character.detail.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.mbe.domain.character.model.Character
 import com.mbe.domain.common.model.Response
-import com.mbe.domain.episode.usecase.GetEpisodesUseCase
 import com.mbe.domain.location.model.Location
-import com.mbe.domain.location.usecase.GetLocationUseCase
 import com.mbe.presentation.character.detail.mapper.toModelUI
 import com.mbe.presentation.character.detail.model.CharacterLocationModelUI
 import com.mbe.presentation.character.detail.model.EpisodeFlowState
 import com.mbe.presentation.character.detail.model.LocationFlowState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CharacterDetailViewModel @Inject constructor(
-    private val locationUseCase: GetLocationUseCase,
-    private val episodesUseCase: GetEpisodesUseCase,
     state: SavedStateHandle
 ) : ViewModel() {
 
@@ -61,19 +53,19 @@ class CharacterDetailViewModel @Inject constructor(
     }
 
     fun getEpisodes() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _episodeStateFlow.value = EpisodeFlowState.Loading
-            _episodeStateFlow.value = episodesUseCase(parseCharacterEpisodes()).let { response ->
-                when (response) {
-                    is Response.Success -> {
-                        EpisodeFlowState.Episodes(response.data.toModelUI())
-                    }
-                    is Response.Error -> {
-                        EpisodeFlowState.Error
-                    }
-                }
-            }
-        }
+//        viewModelScope.launch(Dispatchers.IO) {
+//            _episodeStateFlow.value = EpisodeFlowState.Loading
+//            _episodeStateFlow.value = episodesUseCase(parseCharacterEpisodes()).let { response ->
+//                when (response) {
+//                    is Response.Success -> {
+//                        EpisodeFlowState.Episodes(response.data.toModelUI())
+//                    }
+//                    is Response.Error -> {
+//                        EpisodeFlowState.Error
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun parseCharacterEpisodes(): List<String> {

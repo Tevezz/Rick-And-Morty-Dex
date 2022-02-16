@@ -1,7 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        retrofit_version = '2.9.0'
         core_ktx_version = '1.7.0'
         fragment_ktx_version = '1.4.1'
         coil_version = '1.4.0'

@@ -5,7 +5,6 @@ import com.mbe.data.apollo.CharacterDetailQuery
 import com.mbe.data.apollo.CharacterListQuery
 
 internal abstract class CharacterRemoteDataSource {
-    protected abstract val api: CharacterApi
     abstract suspend fun getCharacter(id: String): ApolloResponse<CharacterDetailQuery.Data>
     abstract suspend fun getCharacters(pageNum: Int): ApolloResponse<CharacterListQuery.Data>
 }

@@ -9,7 +9,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import retrofit2.Retrofit
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -17,10 +16,9 @@ internal object CharacterDataModule {
 
     @Provides
     fun provideCharacterRemoteDataSource(
-        retrofit: Retrofit,
         apolloClient: ApolloClient
     ): CharacterRemoteDataSource {
-        return CharacterRemoteDataSourceImpl(retrofit, apolloClient)
+        return CharacterRemoteDataSourceImpl(apolloClient)
     }
 
     @Provides
