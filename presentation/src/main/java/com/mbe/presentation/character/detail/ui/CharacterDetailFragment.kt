@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mbe.presentation.R
 import com.mbe.presentation.character.detail.model.CharacterDetailFlowState
@@ -59,7 +60,9 @@ class CharacterDetailFragment : Fragment() {
                 with(viewBinding) {
                     when (state) {
                         is CharacterDetailFlowState.CharacterDetail -> {
-                            characterDetailsImage.load(state.character.image)
+                            characterDetailsImage.load(state.character.image) {
+                                transformations(CircleCropTransformation())
+                            }
                             characterDetailsLoader.visibility = View.GONE
                         }
                         is CharacterDetailFlowState.Loading -> {

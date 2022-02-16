@@ -3,6 +3,7 @@ package com.mbe.domain
 import com.mbe.domain.character.exception.InvalidPageNumberException
 import com.mbe.domain.character.model.Character
 import com.mbe.domain.character.model.CharacterList
+import com.mbe.domain.character.model.CharacterListItem
 import com.mbe.domain.character.repository.CharacterRepository
 import com.mbe.domain.character.usecase.GetCharactersUseCase
 import com.mbe.domain.character.usecase.GetCharactersUseCaseImpl
@@ -21,18 +22,16 @@ internal class GetCharactersUseCaseTest {
     private lateinit var useCaseTest: GetCharactersUseCase
 
     private val successCharacterList = CharacterList(
-        count = 826,
         pages = 42,
-        next = "https://rickandmortyapi.com/api/character?page=3",
-        prev = "https://rickandmortyapi.com/api/character?page=1",
+        next = true,
+        prev = false,
         list = listOf(
-            Character(
-                id = 21,
+            CharacterListItem(
+                id = "21",
                 name = "Aqua Morty",
                 status = "unknown",
                 species = "Humanoid",
-                type = "Fish-Person",
-                gender = "Male",
+                location = "Earth",
                 image = "https://rickandmortyapi.com/api/character/avatar/21.jpeg"
             )
         )

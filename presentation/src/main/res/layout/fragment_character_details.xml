@@ -12,48 +12,72 @@
         android:layout_height="0dp"
         android:alpha=".5"
         android:background="@color/character_list_bg"
-        android:elevation="1dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone"/>
+        tools:visibility="gone" >
 
         <ProgressBar
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:indeterminate="true"
-            android:indeterminateTint="@color/character_list_value"
+            android:indeterminateTint="@color/character_detail_value"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/character_details_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
+        android:layout_margin="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".45"
+        app:layout_constraintHeight_percent=".40"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/character_details_tabs"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_details_image" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/character_details_view_pager"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/character_details_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_details_tabs" />
+        app:layout_constraintTop_toBottomOf="@+id/character_details_image" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/character_details_card_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/character_detail_item_bg">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/character_details_tabs"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toEndOf="@+id/character_details_card_container"
+                app:layout_constraintStart_toStartOf="@+id/character_details_card_container"
+                app:layout_constraintTop_toTopOf="@+id/character_details_card_container" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/character_details_view_pager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/character_details_card_container"
+                app:layout_constraintEnd_toEndOf="@+id/character_details_card_container"
+                app:layout_constraintStart_toStartOf="@+id/character_details_card_container"
+                app:layout_constraintTop_toBottomOf="@+id/character_details_tabs" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

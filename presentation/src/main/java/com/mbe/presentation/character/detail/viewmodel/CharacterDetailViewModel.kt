@@ -33,6 +33,7 @@ class CharacterDetailViewModel @Inject constructor(
 
     private fun getCharacterDetails(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            _characterFlow.value = CharacterDetailFlowState.Loading
             getCharacterDetailUseCase(id).also { response ->
                 when (response) {
                     is Response.Success -> {

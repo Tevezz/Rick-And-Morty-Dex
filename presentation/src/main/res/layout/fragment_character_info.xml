@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,12 +11,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_id_title"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/character_info_id_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -36,12 +37,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_name_title"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/character_info_name_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/character_id_title" />
 
@@ -51,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -61,12 +63,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_status_title"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/character_info_status_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/character_name_title" />
 
@@ -76,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -86,12 +89,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_species_title"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/character_info_species_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/character_status_title" />
 
@@ -101,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -111,12 +115,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_type_title"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/character_info_type_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/character_species_title" />
 
@@ -126,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -136,12 +141,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_gender_title"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/character_info_gender_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/character_type_title" />
 
@@ -151,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
