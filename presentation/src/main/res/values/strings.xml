@@ -13,12 +13,11 @@
     <string name="character_detail_location">Location</string>
     <string name="character_detail_episodes">Episodes</string>
 
-    <string name="character_info_id_title">Id</string>
-    <string name="character_info_name_title">Name</string>
     <string name="character_info_status_title">Status</string>
     <string name="character_info_species_title">Species</string>
     <string name="character_info_type_title">Type</string>
     <string name="character_info_gender_title">Gender</string>
+    <string name="character_info_id_name_format">#%s %s</string>
 
     <string name="character_location_location_title">Last seen</string>
     <string name="character_location_origin_title">Origins</string>

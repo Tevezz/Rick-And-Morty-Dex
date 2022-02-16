@@ -14,7 +14,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:gravity="center"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/character_detail_value"
@@ -22,84 +21,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/character_type_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/character_info_type_title"
-            android:textColor="@color/character_detail_title"
-            android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/character_id_name" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/character_type"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/character_detail_value"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/character_type_title"
-            tools:text="Humanoid" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/character_id_title"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/character_info_id_title"
-            android:textColor="@color/character_detail_title"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/character_type" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/character_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/character_detail_value"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/character_id_title"
-            app:layout_constraintTop_toBottomOf="@+id/character_type"
-            tools:text="#001" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/character_name_title"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/character_info_name_title"
-            android:textColor="@color/character_detail_title"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/character_id_title" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/character_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/character_detail_value"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/character_name_title"
-            app:layout_constraintTop_toBottomOf="@+id/character_id_title"
-            tools:text="Rick Sanches" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_status_title"
@@ -111,20 +32,19 @@
             android:textColor="@color/character_detail_title"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/character_name_title" />
+            app:layout_constraintTop_toBottomOf="@+id/character_id_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_status"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/character_status_title"
-            app:layout_constraintTop_toBottomOf="@+id/character_name_title"
+            app:layout_constraintTop_toTopOf="@+id/character_status_title"
             tools:text="Alive" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -141,17 +61,40 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_species"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/character_species_title"
-            app:layout_constraintTop_toBottomOf="@+id/character_status_title"
+            app:layout_constraintTop_toTopOf="@+id/character_species_title"
             tools:text="Human" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/character_type_title"
+            android:layout_width="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/character_info_type_title"
+            android:textColor="@color/character_detail_title"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/character_species_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/character_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/character_detail_value"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/character_type_title"
+            app:layout_constraintTop_toTopOf="@+id/character_type_title"
+            tools:text="Humanoid" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_gender_title"
@@ -163,20 +106,19 @@
             android:textColor="@color/character_detail_title"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/character_species_title" />
+            app:layout_constraintTop_toBottomOf="@+id/character_type_title" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/character_gender"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:textColor="@color/character_detail_value"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/character_gender_title"
-            app:layout_constraintTop_toBottomOf="@+id/character_species_title"
+            app:layout_constraintTop_toTopOf="@+id/character_gender_title"
             tools:text="Male" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
