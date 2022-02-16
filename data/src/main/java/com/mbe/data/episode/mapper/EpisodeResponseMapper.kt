@@ -19,9 +19,6 @@ internal fun EpisodeResponse.toDomainModel(): Episode {
         id = id ?: throw NoContentException(),
         name = name ?: throw NoContentException(),
         airDate = air_date.orEmpty(),
-        episode = episode.orEmpty(),
-        characters = characters.orEmpty(),
-        url = url.orEmpty(),
-        created = created.orEmpty()
+        episode = episode.orEmpty()
     )
 }

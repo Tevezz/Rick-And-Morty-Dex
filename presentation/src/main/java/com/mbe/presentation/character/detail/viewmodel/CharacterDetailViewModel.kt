@@ -42,15 +42,15 @@ class CharacterDetailViewModel @Inject constructor(
     }
 
     fun getLocation() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _locationStateFlow.value = LocationFlowState.Loading
-            _locationStateFlow.value = LocationFlowState.Location(
-                Pair(
-                    handleLocationResponse(locationUseCase(character.originUrl)),
-                    handleLocationResponse(locationUseCase(character.locationUrl))
-                )
-            )
-        }
+//        viewModelScope.launch(Dispatchers.IO) {
+//            _locationStateFlow.value = LocationFlowState.Loading
+//            _locationStateFlow.value = LocationFlowState.Location(
+//                Pair(
+//                    handleLocationResponse(locationUseCase(character.originUrl)),
+//                    handleLocationResponse(locationUseCase(character.locationUrl))
+//                )
+//            )
+//        }
     }
 
     private fun handleLocationResponse(response: Response<Location>): CharacterLocationModelUI {
@@ -77,12 +77,13 @@ class CharacterDetailViewModel @Inject constructor(
     }
 
     private fun parseCharacterEpisodes(): List<String> {
-        return character.episode.mapNotNull {
-            try {
-                it.split("/").last()
-            } catch (e: Exception) {
-                null
-            }
-        }
+//        return character.episode.mapNotNull {
+//            try {
+//                it.split("/").last()
+//            } catch (e: Exception) {
+//                null
+//            }
+//        }
+        return emptyList()
     }
 }

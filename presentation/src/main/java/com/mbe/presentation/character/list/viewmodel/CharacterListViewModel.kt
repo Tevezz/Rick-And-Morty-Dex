@@ -3,15 +3,11 @@ package com.mbe.presentation.character.list.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavDirections
-import com.mbe.domain.character.model.CharacterList
 import com.mbe.domain.character.usecase.GetCharactersUseCase
 import com.mbe.domain.common.model.Response.Success
 import com.mbe.domain.common.model.Response.Error
 import com.mbe.presentation.character.list.mapper.toModelUI
-import com.mbe.presentation.character.list.model.CharacterListItemModelUI
-import com.mbe.presentation.character.list.model.CharacterListModelUI
-import com.mbe.presentation.character.list.ui.CharacterListFragmentDirections
+import com.mbe.presentation.character.list.model.CharacterListFlowState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,41 +16,37 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CharacterListViewModel @Inject constructor(
+internal class CharacterListViewModel @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
-    private var pageNumb = 0
-    private var characterList: CharacterList = CharacterList(
-        count = 0,
-        pages = 0,
-        next = "String()",
-        prev = String(),
-        list = emptyList()
-    )
+    private var pageNumb = 1
 
-    private val _characterListFlow = MutableStateFlow(characterList.toModelUI(1))
-    val characterListFlow: StateFlow<CharacterListModelUI> get() = _characterListFlow
+    private val _characterListFlow =
+        MutableStateFlow<CharacterListFlowState>(CharacterListFlowState.Loading)
+    val characterListFlow: StateFlow<CharacterListFlowState> get() = _characterListFlow
 
     init {
-        requestNextPage()
+        requestCharactersList(1)
     }
 
-    fun getNavigationAction(characterId: Long): NavDirections {
-        val character = characterList.list.first { it.id == characterId }
-        return CharacterListFragmentDirections
-            .actionCharacterListFragmentToCharacterDetailFragment(character)
-    }
+//    fun getNavigationAction(characterId: Long): NavDirections {
+//        val character = characterList.list.first { it.id == characterId }
+//        return CharacterListFragmentDirections
+//            .actionCharacterListFragmentToCharacterDetailFragment(character)
+//    }
 
     fun requestNextPage() {
-        if (_characterListFlow.value.hasNext) {
+        val value = (_characterListFlow.value as? CharacterListFlowState.CharacterList)?.characters?.hasNext
+        if (value != null && value) {
             pageNumb++
             requestCharactersList(pageNumb)
         }
     }
 
     fun requestPreviousPage() {
-        if (_characterListFlow.value.hasPrev) {
+        val value = (_characterListFlow.value as? CharacterListFlowState.CharacterList)?.characters?.hasPrev
+        if (value != null && value) {
             pageNumb--
             requestCharactersList(pageNumb)
         }
@@ -65,8 +57,8 @@ class CharacterListViewModel @Inject constructor(
             getCharactersUseCase(pageNum).also { response ->
                 when (response) {
                     is Success -> {
-                        characterList = response.data
-                        _characterListFlow.value = response.data.toModelUI(pageNum)
+                        _characterListFlow.value =
+                            CharacterListFlowState.CharacterList(response.data.toModelUI(pageNum))
                     }
                     is Error -> {
                         // TODO Handle Error

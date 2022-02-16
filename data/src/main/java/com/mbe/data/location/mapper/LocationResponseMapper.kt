@@ -6,11 +6,8 @@ import com.mbe.domain.location.model.Location
 
 fun LocationResponse.toDomainModel(): Location {
     return Location(
-        id = id ?: throw NoContentException(),
         name = name ?: throw NoContentException(),
         type = type.orEmpty(),
         dimension = dimension.orEmpty(),
-        url = url.orEmpty(),
-        created = created.orEmpty()
     )
 }

@@ -19,7 +19,7 @@ class CharacterListViewHolder(
     fun bind(character: CharacterListItemModelUI, onClick: (CharacterListItemModelUI) -> Unit) {
         with(viewBinding) {
             characterImage.load(character.image)
-            characterId.text = character.id.toString()
+            characterId.text = character.id
             characterName.text = character.name
             characterStatus.text = character.status
             characterSpecies.text = character.species

@@ -1,5 +1,6 @@
 package com.mbe.data.character.di
 
+import com.apollographql.apollo3.ApolloClient
 import com.mbe.data.character.datasource.CharacterRemoteDataSource
 import com.mbe.data.character.datasource.CharacterRemoteDataSourceImpl
 import com.mbe.data.character.repository.CharacterRepositoryImpl
@@ -16,9 +17,10 @@ internal object CharacterDataModule {
 
     @Provides
     fun provideCharacterRemoteDataSource(
-        retrofit: Retrofit
+        retrofit: Retrofit,
+        apolloClient: ApolloClient
     ): CharacterRemoteDataSource {
-        return CharacterRemoteDataSourceImpl(retrofit)
+        return CharacterRemoteDataSourceImpl(retrofit, apolloClient)
     }
 
     @Provides

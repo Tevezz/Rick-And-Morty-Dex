@@ -1,6 +1,6 @@
-package com.mbe.presentation.character.list.model
+package com.mbe.domain.character.model
 
-data class CharacterListItemModelUI(
+data class CharacterListItem(
     val id: String,
     val name: String,
     val image: String,

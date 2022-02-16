@@ -1,31 +1,31 @@
 package com.mbe.presentation.character.list.mapper
 
-import com.mbe.domain.character.model.Character
 import com.mbe.domain.character.model.CharacterList
+import com.mbe.domain.character.model.CharacterListItem
 import com.mbe.presentation.character.list.model.CharacterListItemModelUI
-import com.mbe.presentation.character.list.model.CharacterListModelUI
+import com.mbe.presentation.character.list.model.CharacterListUI
 
-fun CharacterList.toModelUI(currentPage: Int): CharacterListModelUI {
-    return CharacterListModelUI(
+fun CharacterList.toModelUI(currentPage: Int): CharacterListUI {
+    return CharacterListUI(
         currentPage = currentPage,
-        count = count,
         pages = pages,
-        hasNext = next.isNotEmpty(),
-        hasPrev = prev.isNotEmpty(),
+        hasNext = next,
+        hasPrev = prev,
         list = list.toListModelUI()
     )
 }
 
-fun List<Character>.toListModelUI(): List<CharacterListItemModelUI> {
-    return map { it.toCharacterListModelUI() }
+fun List<CharacterListItem>.toListModelUI(): List<CharacterListItemModelUI> {
+    return map { it.toModelUI() }
 }
 
-fun Character.toCharacterListModelUI(): CharacterListItemModelUI {
+fun CharacterListItem.toModelUI(): CharacterListItemModelUI {
     return CharacterListItemModelUI(
         id = id,
         name = name,
-        species = species,
+        image = image,
         status = status,
-        image = image
+        species = species,
+        location = location
     )
 }

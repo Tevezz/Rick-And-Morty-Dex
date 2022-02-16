@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.mbe.presentation.character.detail.ui.CharacterDetailFragmentArgs
+import com.mbe.presentation.character.list.model.CharacterListFlowState
 import com.mbe.presentation.character.list.viewmodel.CharacterListViewModel
 import com.mbe.presentation.databinding.FragmentCharacterListBinding
 import com.mbe.presentation.extension.getTypedAdapter
@@ -42,7 +40,7 @@ class CharacterListFragment : Fragment() {
     private fun initViews() {
         with(viewBinding) {
             characterList.adapter = CharacterListAdapter {
-                findNavController().navigate(viewModel.getNavigationAction(it.id))
+//                findNavController().navigate(viewModel.getNavigationAction(it.id))
             }
             characterListNextBtn.setOnClickListener {
                 viewModel.requestNextPage()
@@ -55,10 +53,17 @@ class CharacterListFragment : Fragment() {
 
     private fun initObservers() {
         lifecycleScope.launchWhenStarted {
-            viewModel.characterListFlow.collectLatest {
-                with(viewBinding) {
-                    characterListPageNum.text = "${it.currentPage} / ${it.pages}" // TODO Add resource string
-                    characterList.getTypedAdapter<CharacterListAdapter>()?.submitList(it.list)
+            viewModel.characterListFlow.collectLatest { state ->
+                when (state) {
+                    is CharacterListFlowState.CharacterList -> {
+                        with(viewBinding) {
+                            characterListPageNum.text = "${state.characters.currentPage} / ${state.characters.pages}" // TODO Add resource string
+                            characterList.getTypedAdapter<CharacterListAdapter>()?.submitList(state.characters.list)
+                        }
+                    }
+                    is CharacterListFlowState.Loading -> {
+                        // TODO
+                    }
                 }
             }
         }
