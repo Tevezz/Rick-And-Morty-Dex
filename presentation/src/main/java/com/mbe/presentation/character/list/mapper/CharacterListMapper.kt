@@ -3,7 +3,9 @@ package com.mbe.presentation.character.list.mapper
 import com.mbe.domain.character.model.CharacterList
 import com.mbe.domain.character.model.CharacterListItem
 import com.mbe.presentation.character.list.model.CharacterListItemModelUI
+import com.mbe.presentation.character.list.model.CharacterListStatus
 import com.mbe.presentation.character.list.model.CharacterListUI
+import com.mbe.presentation.extension.safeValueOf
 
 fun CharacterList.toModelUI(currentPage: Int): CharacterListUI {
     return CharacterListUI(
@@ -24,7 +26,7 @@ fun CharacterListItem.toModelUI(): CharacterListItemModelUI {
         id = id,
         name = name,
         image = image,
-        status = status,
+        status = safeValueOf(status, CharacterListStatus.Unknown),
         species = species,
         location = location
     )

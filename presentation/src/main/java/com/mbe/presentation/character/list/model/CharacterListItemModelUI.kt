@@ -4,7 +4,7 @@ data class CharacterListItemModelUI(
     val id: String,
     val name: String,
     val image: String,
-    val status: String,
+    val status: CharacterListStatus,
     val species: String,
     val location: String
 )

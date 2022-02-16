@@ -1,11 +1,10 @@
 package com.mbe.presentation.character.list.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mbe.domain.character.usecase.GetCharactersUseCase
-import com.mbe.domain.common.model.Response.Success
 import com.mbe.domain.common.model.Response.Error
+import com.mbe.domain.common.model.Response.Success
 import com.mbe.presentation.character.list.mapper.toModelUI
 import com.mbe.presentation.character.list.model.CharacterListFlowState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +26,7 @@ internal class CharacterListViewModel @Inject constructor(
     val characterListFlow: StateFlow<CharacterListFlowState> get() = _characterListFlow
 
     init {
-        requestCharactersList(1)
+        requestCharactersList(pageNumb)
     }
 
 //    fun getNavigationAction(characterId: Long): NavDirections {
@@ -37,23 +36,18 @@ internal class CharacterListViewModel @Inject constructor(
 //    }
 
     fun requestNextPage() {
-        val value = (_characterListFlow.value as? CharacterListFlowState.CharacterList)?.characters?.hasNext
-        if (value != null && value) {
-            pageNumb++
-            requestCharactersList(pageNumb)
-        }
+        pageNumb++
+        requestCharactersList(pageNumb)
     }
 
     fun requestPreviousPage() {
-        val value = (_characterListFlow.value as? CharacterListFlowState.CharacterList)?.characters?.hasPrev
-        if (value != null && value) {
-            pageNumb--
-            requestCharactersList(pageNumb)
-        }
+        pageNumb--
+        requestCharactersList(pageNumb)
     }
 
     private fun requestCharactersList(pageNum: Int) {
         viewModelScope.launch(Dispatchers.IO) {
+            _characterListFlow.value = CharacterListFlowState.Loading
             getCharactersUseCase(pageNum).also { response ->
                 when (response) {
                     is Success -> {
@@ -61,8 +55,8 @@ internal class CharacterListViewModel @Inject constructor(
                             CharacterListFlowState.CharacterList(response.data.toModelUI(pageNum))
                     }
                     is Error -> {
-                        // TODO Handle Error
-                        Log.e("ViewModel", "Error: ${response.exception.message}")
+                        _characterListFlow.value =
+                            CharacterListFlowState.Error(response.exception.message.orEmpty())
                     }
                 }
             }
