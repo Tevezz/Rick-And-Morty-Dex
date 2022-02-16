@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.mbe.presentation.character.detail.model.LocationFlowState
+import com.mbe.presentation.character.detail.model.CharacterDetailFlowState
 import com.mbe.presentation.character.detail.viewmodel.CharacterDetailViewModel
 import com.mbe.presentation.databinding.FragmentCharacterLocationBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,31 +32,23 @@ class CharacterLocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getLocation()
         initObservers()
     }
 
     private fun initObservers() {
         lifecycleScope.launchWhenStarted {
-            viewModel.locationStateFlow.collectLatest { state ->
-                when (state) {
-                    is LocationFlowState.Location -> {
-                        state.data.also { (origin, location) ->
-                            viewBinding.characterOriginName.text = origin.name
-                            viewBinding.characterOriginType.text = origin.type
-                            viewBinding.characterOriginDimension.text = origin.dimension
-                            viewBinding.characterLocationName.text = location.name
-                            viewBinding.characterLocationType.text = location.type
-                            viewBinding.characterLocationDimension.text = location.dimension
-                        }
-                        // TODO Hide Loading
-                    }
-                    is LocationFlowState.Loading -> {}
+            viewModel.characterFlow.collectLatest { state ->
+                if (state is CharacterDetailFlowState.CharacterDetail) {
+                    viewBinding.characterOriginName.text = state.character.origin.name
+                    viewBinding.characterOriginType.text = state.character.origin.type
+                    viewBinding.characterOriginDimension.text = state.character.origin.dimension
+                    viewBinding.characterLocationName.text = state.character.location.name
+                    viewBinding.characterLocationType.text = state.character.location.type
+                    viewBinding.characterLocationDimension.text = state.character.location.dimension
                 }
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.mbe.presentation.character.detail.model.EpisodeFlowState
+import com.mbe.presentation.character.detail.model.CharacterDetailFlowState
 import com.mbe.presentation.character.detail.viewmodel.CharacterDetailViewModel
 import com.mbe.presentation.databinding.FragmentCharacterEpisodeBinding
 import com.mbe.presentation.extension.getTypedAdapter
@@ -33,7 +33,6 @@ class CharacterEpisodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getEpisodes()
         initViews()
         initObservers()
     }
@@ -46,18 +45,10 @@ class CharacterEpisodeFragment : Fragment() {
 
     private fun initObservers() {
         lifecycleScope.launchWhenStarted {
-            viewModel.episodeStateFlow.collectLatest { state ->
-                when (state) {
-                    is EpisodeFlowState.Episodes -> {
-                        viewBinding.characterEpisodesList.
-                        getTypedAdapter<CharacterEpisodeAdapter>()?.submitList(state.episodes)
-                    }
-                    is EpisodeFlowState.Loading -> {
-
-                    }
-                    is EpisodeFlowState.Error -> {
-
-                    }
+            viewModel.characterFlow.collectLatest { state ->
+                if (state is CharacterDetailFlowState.CharacterDetail) {
+                    viewBinding.characterEpisodesList.
+                    getTypedAdapter<CharacterEpisodeAdapter>()?.submitList(state.character.episodes)
                 }
             }
         }

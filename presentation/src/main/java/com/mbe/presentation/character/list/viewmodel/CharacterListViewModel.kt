@@ -29,12 +29,6 @@ internal class CharacterListViewModel @Inject constructor(
         requestCharactersList(pageNumb)
     }
 
-//    fun getNavigationAction(characterId: Long): NavDirections {
-//        val character = characterList.list.first { it.id == characterId }
-//        return CharacterListFragmentDirections
-//            .actionCharacterListFragmentToCharacterDetailFragment(character)
-//    }
-
     fun requestNextPage() {
         pageNumb++
         requestCharactersList(pageNumb)

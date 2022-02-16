@@ -18,7 +18,9 @@ class CharacterListDiffUtil : DiffUtil.ItemCallback<CharacterListItemModelUI>() 
     ): Boolean {
         return oldItem.id == newItem.id
             && oldItem.name == newItem.name
+            && oldItem.image == newItem.image
             && oldItem.status == newItem.status
             && oldItem.species == newItem.species
+            && oldItem.location == newItem.location
     }
 }

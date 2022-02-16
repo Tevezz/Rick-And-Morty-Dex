@@ -1,14 +1,17 @@
 <resources>
     <string name="app_name">presentation</string>
-    <string name="character_info">Info</string>
-    <string name="character_location">Location</string>
-    <string name="character_episodes">Episodes</string>
+
 
     <string name="character_list_id_prefix">#%s</string>
     <string name="character_list_page_format">%s / %s</string>
     <string name="character_list_status_species_format">%s - %s</string>
     <string name="character_list_location_title">Last seen in</string>
     <string name="character_list_error">There was an error while loading the list!</string>
+
+    <string name="character_detail_error">There was an error while loading this character!</string>
+    <string name="character_detail_info">Info</string>
+    <string name="character_detail_location">Location</string>
+    <string name="character_detail_episodes">Episodes</string>
 
     <string name="character_info_id_title">Id</string>
     <string name="character_info_name_title">Name</string>

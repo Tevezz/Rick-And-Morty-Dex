@@ -2,10 +2,10 @@ package com.mbe.presentation.character.detail.ui.episode
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.mbe.presentation.character.detail.model.CharacterEpisodeModelUI
+import com.mbe.presentation.character.detail.model.CharacterDetailEpisodeUI
 
 class CharacterEpisodeAdapter :
-    ListAdapter<CharacterEpisodeModelUI, CharacterEpisodeViewHolder>(CharacterEpisodeDiffUtil()) {
+    ListAdapter<CharacterDetailEpisodeUI, CharacterEpisodeViewHolder>(CharacterEpisodeDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterEpisodeViewHolder {
         return CharacterEpisodeViewHolder(parent)

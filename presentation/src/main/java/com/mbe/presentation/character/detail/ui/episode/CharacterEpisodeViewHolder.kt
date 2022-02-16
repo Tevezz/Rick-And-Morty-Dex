@@ -3,7 +3,7 @@ package com.mbe.presentation.character.detail.ui.episode
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mbe.presentation.character.detail.model.CharacterEpisodeModelUI
+import com.mbe.presentation.character.detail.model.CharacterDetailEpisodeUI
 import com.mbe.presentation.databinding.ViewHolderCharacterEpisodeBinding
 
 class CharacterEpisodeViewHolder(
@@ -15,9 +15,9 @@ class CharacterEpisodeViewHolder(
             false
         )
 ) : RecyclerView.ViewHolder(viewBinding.root) {
-    fun bind(episode: CharacterEpisodeModelUI) {
+    fun bind(episode: CharacterDetailEpisodeUI) {
         with(viewBinding) {
-            episodeId.text = episode.id.toString()
+            episodeId.text = episode.id
             episodeName.text = episode.name
             episodeDate.text = episode.airDate
             episodeSeason.text = episode.episode

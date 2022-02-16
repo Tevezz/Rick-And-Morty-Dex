@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.mbe.presentation.R
 import com.mbe.presentation.character.list.model.CharacterListFlowState
 import com.mbe.presentation.character.list.viewmodel.CharacterListViewModel
@@ -42,7 +43,11 @@ class CharacterListFragment : Fragment() {
     private fun initViews() {
         with(viewBinding) {
             characterList.adapter = CharacterListAdapter {
-//                findNavController().navigate(viewModel.getNavigationAction(it.id))
+                findNavController()
+                    .navigate(
+                        CharacterListFragmentDirections.
+                        actionCharacterListFragmentToCharacterDetailFragment(it.id)
+                    )
             }
             characterListNextBtn.setOnClickListener {
                 viewModel.requestNextPage()

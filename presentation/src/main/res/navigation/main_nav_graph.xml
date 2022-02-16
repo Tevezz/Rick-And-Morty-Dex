@@ -17,5 +17,10 @@
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="com.mbe.presentation.character.detail.ui.CharacterDetailFragment"
-        android:label="CharacterDetailFragment" />
+        android:label="CharacterDetailFragment"
+        tools:layout="@layout/fragment_character_info" >
+        <argument
+            android:name="characterId"
+            app:argType="string" />
+    </fragment>
 </navigation>
