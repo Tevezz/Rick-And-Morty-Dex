@@ -29,4 +29,4 @@ jobs:
           java-version: 11
           
       - name: Build Project
-        run: bash ./gradlew :presentation:assembleDebug, :domain:assembleDebug, :data:assembleDebug, :app:assembleDebug
+        run: ./gradlew build
