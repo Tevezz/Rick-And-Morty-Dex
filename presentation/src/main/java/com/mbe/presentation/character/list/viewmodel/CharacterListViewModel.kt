@@ -1,5 +1,6 @@
 package com.mbe.presentation.character.list.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mbe.domain.character.usecase.GetCharactersUseCase
@@ -21,6 +22,7 @@ internal class CharacterListViewModel @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
+    @VisibleForTesting
     var pageNumb = 1
 
     private val _characterListFlow =
