@@ -17,3 +17,8 @@ Outstanding libraries used to develop the application:
 - [Mockk](https://mockk.io/) - Mocking library used to write unit tests.
 - [Kotest Assertions](https://kotest.io/docs/assertions/assertions.html) - Provides comprehensive assertion / matchers that are easier to write and read.
 - [Turbine](https://github.com/cashapp/turbine) - Turbine is a testing library for kotlinx coroutines flow.
+
+## Screenshots
+
+| ![image](https://github.com/Tevezz/Rick-And-Morty-Dex/blob/master/screenshots/list1.jpeg) | ![image](https://github.com/Tevezz/Rick-And-Morty-Dex/blob/master/screenshots/list2.jpeg) | ![image](https://github.com/Tevezz/Rick-And-Morty-Dex/blob/master/screenshots/info.jpeg) | ![image](https://github.com/Tevezz/Rick-And-Morty-Dex/blob/master/screenshots/location.jpeg) | ![image](https://github.com/Tevezz/Rick-And-Morty-Dex/blob/master/screenshots/episodes.jpeg) |
+| --- | --- | --- | --- | --- |
