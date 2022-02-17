@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.mbe.domain.character.usecase.GetCharactersUseCase
 import com.mbe.domain.common.model.Response.Error
 import com.mbe.domain.common.model.Response.Success
+import com.mbe.presentation.character.dispatcher.DispatcherProvider
 import com.mbe.presentation.character.list.mapper.toModelUI
 import com.mbe.presentation.character.list.model.CharacterListFlowState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,10 +17,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class CharacterListViewModel @Inject constructor(
+    private val dispatcherProvider: DispatcherProvider,
     private val getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
-    private var pageNumb = 1
+    var pageNumb = 1
 
     private val _characterListFlow =
         MutableStateFlow<CharacterListFlowState>(CharacterListFlowState.Loading)
@@ -40,7 +42,7 @@ internal class CharacterListViewModel @Inject constructor(
     }
 
     private fun requestCharactersList(pageNum: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcherProvider.io) {
             _characterListFlow.value = CharacterListFlowState.Loading
             getCharactersUseCase(pageNum).also { response ->
                 when (response) {
