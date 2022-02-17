@@ -1,5 +1,6 @@
 package com.mbe.presentation.character.detail.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,6 +9,7 @@ import com.mbe.domain.character.usecase.GetCharacterDetailUseCase
 import com.mbe.domain.common.model.Response
 import com.mbe.presentation.character.detail.mapper.toModelUI
 import com.mbe.presentation.character.detail.model.CharacterDetailFlowState
+import com.mbe.presentation.character.dispatcher.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,8 +18,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CharacterDetailViewModel @Inject constructor(
+internal class CharacterDetailViewModel @Inject constructor(
     state: SavedStateHandle,
+    private val dispatcherProvider: DispatcherProvider,
     private val getCharacterDetailUseCase: GetCharacterDetailUseCase
 ) : ViewModel() {
 
@@ -25,14 +28,15 @@ class CharacterDetailViewModel @Inject constructor(
         MutableStateFlow<CharacterDetailFlowState>(CharacterDetailFlowState.Loading)
     val characterFlow: StateFlow<CharacterDetailFlowState> get() = _characterFlow
 
-    init { // TODO There should be a property for this
+    init {
         state.get<String>("characterId")?.also {
             getCharacterDetails(it)
         }
     }
 
-    private fun getCharacterDetails(id: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+    @VisibleForTesting
+    fun getCharacterDetails(id: String) {
+        viewModelScope.launch(dispatcherProvider.io) {
             _characterFlow.value = CharacterDetailFlowState.Loading
             getCharacterDetailUseCase(id).also { response ->
                 when (response) {
